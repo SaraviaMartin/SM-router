@@ -1,5 +1,5 @@
-- [] Crea una forma de hacerf SPAs
-- [] Poder navegar entre paginas con el boton de atras
+- [x] Crea una forma de hacerf SPAs
+- [x] Poder navegar entre paginas con el boton de atras
 - [] Crear componente Link para ahcerlo declarativo
 - [] Crear componente Router para hacerlo mas declarativo
 - [] Soportar ruta por defecto (404)
