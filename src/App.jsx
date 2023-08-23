@@ -1,5 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+
+const NAVIGATION_EVENT = 'pushState'
+
+function navigate(href){
+  window.history.pushState({}, '', href)
+  const navigationEvent = new Event(NAVIGATION_EVENT)
+  window.dispatchEvent(navigationEvent)
+}
+
+
+
 export function Homepage(){
   return (
     <>
@@ -23,6 +34,19 @@ export function AboutPage(){
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname) 
+
+  useEffect(() => {
+    const onLocationChange=()=> {
+      setCurrentPath(window.location.pathname)
+    }
+
+    window.addEventListener(NAVIGATION_EVENT,onLocationChange)
+
+    return ()=> {
+      window.removeEventListener(NAVIGATION_EVENT,onLocationChange)
+    }
+  }, [])
+
   return(
     <main>
       {currentPath === "/" && <Homepage/>}
