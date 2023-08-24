@@ -1,7 +1,7 @@
 import { EVENTS } from './consts'
 import { useState, useEffect } from 'react'
 
-export default function  Router ({routes=[], defaultComponent: DefaulComponent = () => <h1>404</h1>}){
+export function  Router ({routes=[], defaultComponent: DefaultComponent = () => <h1>404</h1>}){
     const [currentPath, setCurrentPath] = useState(window.location.pathname) 
   
     useEffect(() => {
@@ -19,5 +19,5 @@ export default function  Router ({routes=[], defaultComponent: DefaulComponent =
     }, [])
   
     const Page = routes.find(({path}) => path === currentPath)?.Component
-    return Page ? <Page/> : <DefaulComponent/>
+    return Page ? <Page/> : <DefaultComponent/>
   }
