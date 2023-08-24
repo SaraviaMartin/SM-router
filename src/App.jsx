@@ -1,31 +1,23 @@
-import { useEffect, useState } from 'react'
 import './App.css'
-import { EVENTS } from './consts'
 import Homepage from './pages/Home'
-import  AboutPage from './pages/About'
+import AboutPage from './pages/About'
+import {Router} from './Router'
 
+const routes = [
+  {
+    path: '/',
+    Component: Homepage
+  },
+  {
+    path: '/about',
+    Component: AboutPage
+  }
+]
 
 function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname) 
-
-  useEffect(() => {
-    const onLocationChange=()=> {
-      setCurrentPath(window.location.pathname)
-    }
-
-    window.addEventListener(EVENTS.PUSHSTATE,onLocationChange)
-    window.addEventListener(EVENTS.POPSTATE, onLocationChange)
-
-    return ()=> {
-      window.removeEventListener(EVENTS.PUSHSTATE,onLocationChange)
-      window.addEventListener(EVENTS.POPSTATE, onLocationChange)
-    }
-  }, [])
-
   return(
     <main>
-      {currentPath === "/" && <Homepage/>}
-      {currentPath === "/about" && <AboutPage/>}
+      <Router routes={routes}/>
     </main>
   )
 }
