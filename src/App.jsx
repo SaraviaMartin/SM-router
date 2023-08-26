@@ -1,10 +1,12 @@
 import './App.css'
-import Homepage from './pages/Home'
-import AboutPage from './pages/About'
 import Page404 from './pages/Page404'
 import SearchPage from './pages/Search'
 import {Router} from './Router'
 import { Route } from './Route'
+import { Suspense, lazy } from 'react'
+
+const LazyHomePage = lazy( () => import('./pages/Home.jsx'))
+const LazyAboutPage = lazy( () => import('./pages/About.jsx'))//import dinamico
 
 const appRoutes = [
   {
@@ -16,10 +18,12 @@ const appRoutes = [
 function App() {
   return(
     <main>
-      <Router routes={appRoutes} defaultComponent={Page404}>
-        <Route path="/" Component={Homepage} />
-        <Route path="/about" Component={AboutPage} />
-      </Router>
+      <Suspense fallback={null}>
+        <Router routes={appRoutes} defaultComponent={Page404}>
+          <Route path="/" Component={LazyHomePage} />
+          <Route path="/about" Component={LazyAboutPage} />
+        </Router>
+      </Suspense>
     </main>
   )
 }
