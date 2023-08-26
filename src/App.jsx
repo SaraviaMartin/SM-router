@@ -9,6 +9,10 @@ const LazyHomePage = lazy( () => import('./pages/Home.jsx'))
 const LazyAboutPage = lazy( () => import('./pages/About.jsx'))//import dinamico
 
 const appRoutes = [
+  { 
+    path: '/:lang/about',
+    Component: LazyAboutPage
+  },
   {
     path: '/search/:query',
     Component: SearchPage
