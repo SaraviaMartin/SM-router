@@ -26,9 +26,9 @@ export function  Router ({children, routes=[], defaultComponent: DefaultComponen
       const isRoute = name === "Route"
 
       return isRoute ? props : null
-    }).filter(Boolean)
+    })
 
-    const rutesToUse = routes.concat(routesFromChildren)
+    const rutesToUse = routes.concat(routesFromChildren).filter(Boolean)
   
     const Page = rutesToUse.find(({path}) => {
       if(path === currentPath) return true
