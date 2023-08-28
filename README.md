@@ -9,4 +9,4 @@
 - [x] Lazy loading de las rutas
 - [x] Hacer un i18n con las rutas 
 - [x] Testing
-- [] Publicar el paquete NPM
+- [x] Publicar el paquete NPM
