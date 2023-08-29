@@ -1,6 +1,6 @@
 {
   "name": "juan444-router",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
